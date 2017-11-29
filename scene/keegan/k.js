@@ -3,14 +3,14 @@ export default class Space {
         for (let i=0; i<100; i++){
             //move to a random point and draws stars 100 times
             lib.penColor("white");
-            lib.moveTo(Math.random()*320,Math.random()*450);
+            lib.moveTo(Math.random()*lib.width,Math.random()*lib.height);
             lib.dot(Math.random()*2);
         }
     }
     background(lib){
-        //draws bacground
-        lib.moveTo(160,225);
-        lib.penColor("Black");
+        //draws background
+        lib.moveTo(lib.width/2,lib.height/2);
+        lib.penColor("black");
         lib.dot(500);
     }
 }

@@ -7,7 +7,7 @@ init();
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
-let lib = new Library(ctx, 320, 450);
+let lib = new Library(ctx, 320, 568);
 let jupiter = new Jupiter();
 let space = new Space();
 

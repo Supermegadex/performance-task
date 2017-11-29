@@ -1,0 +1,19 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #62727b;
+}
+
+#canvas {
+  margin-right: -353px;
+  transform: translateY(-111px);
+  z-index: -1;
+}
+
+#frame {
+  z-index: 99;
+}
+
+.wrapper {
+  text-align: center;
+}
