@@ -133,7 +133,7 @@ export default class Library {
         var clockwiseDegrees = counterclockwise ? -angle : angle;
         var ctx = this.ctx;
         if (ctx) {
-        var centerX = this.turtle.x +
+            var centerX = this.turtle.x +
               radius * Math.sin(2 * Math.PI * (this.turtle.rot + centerAngle) / 360);
             var centerY = this.turtle.y -
               radius * Math.cos(2 * Math.PI * (this.turtle.rot + centerAngle) / 360);

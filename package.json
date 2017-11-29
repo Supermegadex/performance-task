@@ -10,8 +10,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "webpack -d --watch",
-    "build": "webpack -p"
+    "test": "webpack -d --watch --config debug.config.js",
+    "build": "babel scene -d build && webpack -p"
   },
   "repository": {
     "type": "git",
