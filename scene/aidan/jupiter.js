@@ -5,4 +5,5 @@ export default class Jupiter {
         lib.penColor("#FAF0E6");
         lib.dot(130);
     }
+    
 }
