@@ -7,7 +7,6 @@ body, html {
 #canvas {
   margin-right: -353px;
   transform: translateY(-111px);
-  z-index: -1;
 }
 
 #frame {

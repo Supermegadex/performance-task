@@ -8,8 +8,8 @@ let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
 let lib = new Library(ctx, 320, 568);
-let jupiter = new Jupiter();
-let space = new Space();
+let jupiter = new Jupiter(lib);
+let space = new Space(lib);
 
 space.background(lib);
 space.stars(lib);
