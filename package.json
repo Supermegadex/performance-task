@@ -19,7 +19,7 @@
     "dev": "concurrently \"npm test\" \"serve www\"",
     "test": "webpack -d --watch --config debug.config.js",
     "build": "concurrently \"npm run copy\" \"webpack -p\"",
-    "copy": "copyfiles ./scene/**/*.js ./www/scripts"
+    "copy": "copyfiles ./scene/**/*.js ./scene/*.js ./www/scripts"
   },
   "repository": {
     "type": "git",

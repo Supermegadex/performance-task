@@ -16,10 +16,23 @@ body, html {
 .wrapper {
   transform-origin: top;
   text-align: center;
+  min-height: 100vh;
 }
 
 .names {
-  
+
+}
+
+.jupiter {
+  font-size: 4em;
+}
+
+#footer {
+  height: 100vh;
+  position: absolute;
+  margin-bottom: 100vh;
+  text-align: center;
+  width: 100%;
 }
 
 @media (min-width: 100vh) {
