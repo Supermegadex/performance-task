@@ -7,6 +7,8 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "code-api": "^1.0.0",
+    "copyfiles": "^1.2.0",
     "webpack": "^3.8.1"
   },
   "devDependencies": {
@@ -16,7 +18,8 @@
   "scripts": {
     "dev": "concurrently \"npm test\" \"serve www\"",
     "test": "webpack -d --watch --config debug.config.js",
-    "build": "webpack -p"
+    "build": "concurrently \"npm run copy\" \"webpack -p\"",
+    "copy": "copyfiles ./scene/**/*.js ./www/scripts"
   },
   "repository": {
     "type": "git",

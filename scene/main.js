@@ -1,9 +1,7 @@
 import Jupiter from './aidan/jupiter';
 import Space from './keegan/k';
 import Library from './daniel/lib';
-import init from './daniel/init';
 
-init();
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 

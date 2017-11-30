@@ -1,5 +1,8 @@
+import init from './init';
+
 export default class Library {
     constructor(ctx, width, height) {
+        init();
         this.ctx = ctx;
         this.width = width;
         this.height = height;
