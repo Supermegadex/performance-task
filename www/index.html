@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title>Jupiter</title>
-  <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="tingle/tingle.min.css">
+  <link rel="stylesheet" href="prism/prism.css">
+  <link rel="stylesheet" href="app.css">
 </head>
 
 <body>
@@ -23,23 +24,20 @@
   </footer>
 
   <script src="tingle/tingle.min.js"></script>
+  <script src="prism/prism.js"></script>
   <script src="app.js"></script>
   <script>
     /* global tingle fetch */
     
     var modal = new tingle.modal({
         footer: true,
-        stickyFooter: false,
+        stickyFooter: true,
         closeMethods: ['overlay', 'button', 'escape'],
         closeLabel: "Close",
         cssClass: ['custom-class-1', 'custom-class-2'],
         onOpen: function() {
             console.log('modal open');
-            fetch("scripts/scene/main.js").then((data) => {
-              data.text().then((js) => {
-                modal.setContent(`<pre><code class="language-javscript">${js}</code></pre>`);
-              });
-            });
+            loadFile("scripts/scene/main.js");
         },
         onClose: function() {
             console.log('modal closed');
@@ -48,11 +46,32 @@
             return true;
         }
     });
+
+    function loadFile(path) {
+      fetch(path).then((data) => {
+        data.text(path).then((js) => {
+          modal.setContent(`<pre><code class="language-javscript">${Prism.highlight(js, Prism.languages.javascript)}</code></pre>`);
+          modal.checkOverflow();
+        });
+      });
+    }
     
     modal.setContent('<h1>Loading...</h1>');
     
-    modal.addFooterBtn('Button label', 'tingle-btn tingle-btn--primary', function() {
-        modal.close();
+    modal.addFooterBtn('main.js', 'tingle-btn tingle-btn--primary', function() {
+      loadFile("scripts/scene/main.js");
+    });
+
+    modal.addFooterBtn('lib.js', 'tingle-btn tingle-btn--primary', function () {
+      loadFile("scripts/scene/daniel/lib.js");
+    });
+
+    modal.addFooterBtn('space.js', 'tingle-btn tingle-btn--primary', function () {
+      loadFile("scripts/scene/keegan/k.js");
+    });
+
+    modal.addFooterBtn('jupiter.js', 'tingle-btn tingle-btn--primary', function () {
+      loadFile("scripts/scene/aidan/jupiter.js");
     });
     
   </script>

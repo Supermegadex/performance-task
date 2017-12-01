@@ -9,6 +9,18 @@ body, html {
   transform: translateY(-111px);
 }
 
+pre, code {
+  white-space: pre-wrap !important;
+}
+
+.tingle-modal-box__content {
+  background-color: #263238;
+}
+
+.tingle-modal-box__footer {
+  background-color: #4f5b62;
+}
+
 #frame {
   z-index: 99;
 }
