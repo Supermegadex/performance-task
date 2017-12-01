@@ -1,18 +1,37 @@
+ /*************************************************************
+ * 
+ * Re-created code.org API for JUPITER Performance Task Practice.
+ * Author: Daniel Noon.
+ * (c) 2017 licensed under GPL v3.
+ * 
+ *************************************************************/
+
 export default class Library {
     constructor(ctx, width, height) {
+        
+        // Add toRad method to the prototype of every Number
         if (typeof (Number.prototype.toRad) === "undefined") {
             Number.prototype.toRad = function () {
                 return this * Math.PI / 180;
             }
         }
+        
+        // Add toDeg method to the prototype of every Number
         if (typeof (Number.prototype.toDeg) === "undefined") {
             Number.prototype.toDeg = function () {
                 return this * 180 / Math.PI;
             }
         }
+        
+        // Assign initialization parameters to the instance
         this.ctx = ctx;
         this.width = width;
         this.height = height;
+        
+        // Change line cap of all lines to round ones
+        this.ctx.lineCap = "round";
+        
+        // Give the turtle some default values
         this.turtle = {
             x: width / 2,
             y: height / 2,
@@ -22,7 +41,8 @@ export default class Library {
             width: 5
         };
     }
-
+    
+    // You know what these do, right?
     moveTo(x, y) {
         this.turtle.x = x;
         this.turtle.y = y;
@@ -163,5 +183,9 @@ export default class Library {
 
     arcLeft(angle, radius) {
         this.arcRight(angle, radius, true);
+    }
+    
+    randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 }

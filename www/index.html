@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Jupiter</title>
-  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="tingle/tingle.min.css">
 </head>
 
 <body>
@@ -17,10 +18,44 @@
   <footer id="footer">
     <h1 class="jupiter">Jupiter</h1>
     <h2 class="names">Keegan Brown, Aidan Buechler, Daniel Noon</h2>
-    <a href="https://github.com/Supermegadex/performance-task" class="code">Check Out the Code!</a>
+    <!--<a href="https://github.com/Supermegadex/performance-task" class="code">Check Out the Code!</a>-->
+    <button onclick="modal.open();">Show me some code!</button>
   </footer>
 
+  <script src="tingle/tingle.min.js"></script>
   <script src="app.js"></script>
+  <script>
+    /* global tingle fetch */
+    
+    var modal = new tingle.modal({
+        footer: true,
+        stickyFooter: false,
+        closeMethods: ['overlay', 'button', 'escape'],
+        closeLabel: "Close",
+        cssClass: ['custom-class-1', 'custom-class-2'],
+        onOpen: function() {
+            console.log('modal open');
+            fetch("scripts/scene/main.js").then((data) => {
+              data.text().then((js) => {
+                modal.setContent(`<pre><code class="language-javscript">${js}</code></pre>`);
+              });
+            });
+        },
+        onClose: function() {
+            console.log('modal closed');
+        },
+        beforeClose: function() {
+            return true;
+        }
+    });
+    
+    modal.setContent('<h1>Loading...</h1>');
+    
+    modal.addFooterBtn('Button label', 'tingle-btn tingle-btn--primary', function() {
+        modal.close();
+    });
+    
+  </script>
 </body>
 
 </html>
