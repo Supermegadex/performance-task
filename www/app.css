@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee|Monoton|Montserrat+Subrayada:700|Zilla+Slab+Highlight');
+
 body, html {
   margin: 0;
   padding: 0;
   background: #62727b;
+}
+
+img {
+  vertical-align: initial;
 }
 
 #canvas {
@@ -32,11 +38,18 @@ pre, code {
 }
 
 .names {
+  padding: 20px;
+  font-family: Bungee;
+}
 
+.code-btn {
+  margin-top: 20px;
 }
 
 .jupiter {
-  font-size: 4em;
+  font-size: 5em;
+  padding: 25px;
+  font-family: "Zilla Slab Highlight";
 }
 
 #footer {
@@ -45,6 +58,7 @@ pre, code {
   margin-bottom: 100vh;
   text-align: center;
   width: 100%;
+  padding: 10px;
 }
 
 @media (min-width: 100vh) {

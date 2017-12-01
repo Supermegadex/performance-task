@@ -6,6 +6,7 @@
   <title>Jupiter</title>
   <link rel="stylesheet" href="tingle/tingle.min.css">
   <link rel="stylesheet" href="prism/prism.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="app.css">
 </head>
 
@@ -18,16 +19,15 @@
 
   <footer id="footer">
     <h1 class="jupiter">Jupiter</h1>
-    <h2 class="names">Keegan Brown, Aidan Buechler, Daniel Noon</h2>
-    <!--<a href="https://github.com/Supermegadex/performance-task" class="code">Check Out the Code!</a>-->
-    <button onclick="modal.open();">Show me some code!</button>
+    <h3 class="names">Keegan Brown, Aidan Buechler, Daniel Noon</h3>
+    <button onclick="modal.open();" class="btn btn-light btn-lg code-btn">Show me some code!</button>
   </footer>
 
   <script src="tingle/tingle.min.js"></script>
   <script src="prism/prism.js"></script>
   <script src="app.js"></script>
   <script>
-    /* global tingle fetch */
+    /* global tingle fetch Prism */
     
     var modal = new tingle.modal({
         footer: true,
@@ -56,7 +56,7 @@
       });
     }
     
-    modal.setContent('<h1>Loading...</h1>');
+    modal.setContent('<h1 style="color: white">Loading...</h1>');
     
     modal.addFooterBtn('main.js', 'tingle-btn tingle-btn--primary', function() {
       loadFile("scripts/scene/main.js");
@@ -72,6 +72,10 @@
 
     modal.addFooterBtn('jupiter.js', 'tingle-btn tingle-btn--primary', function () {
       loadFile("scripts/scene/aidan/jupiter.js");
+    });
+    
+    modal.addFooterBtn('storm.js', 'tingle-btn tingle-btn--primary', function () {
+      loadFile("scripts/scene/daniel/storm.js");
     });
     
   </script>
