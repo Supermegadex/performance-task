@@ -7,16 +7,34 @@
  *************************************************************/
 
 export default class Storm {
+    
+    // constructor:
+    //      lib: code.org library
+    
+    // Instantiates the object with initial values.
+    // Written by Daniel Noon
+    
     constructor(lib) {
         this.lib = lib;
     }
     
-    makeAnEllipse(r, g, b, sizeX, sizeY) {
+    // makeAnEllipse:
+    //      r: Red intensity of the ellipse
+    //      g: Green intensity of the ellipse
+    //      b: Blue intensity of the ellipse
+    //      sizeX: Radius of the ellipse in the X direction
+    //      sizeY: Radius of the ellipse in the Y direction
+    //      jup: Jupiter's current y-offset
+    
+    // Draws one of the 15 ellipses that make up Jupiter's spot.
+    // Written by Daniel Noon
+    
+    makeAnEllipse(r, g, b, sizeX, sizeY, jup) {
         this.lib.penRGB(r, g, b);
         this.lib.ctx.beginPath();
         this.lib.ctx.ellipse(
             this.lib.width / 2 - 50,
-            this.lib.height / 2 + 50,
+            this.lib.height / 2 + 50 + jup, // Add jupiter's y-offest to make sure the spot animates with Jupiter
             sizeX,
             sizeY,
             0,
@@ -25,10 +43,16 @@ export default class Storm {
         this.lib.ctx.fill();
     }
     
-    draw() {
+    // draw:
+    //      jup: Jupiter's current y-offset
+    
+    // Instantiates the object with initial values.
+    // Written by Daniel Noon
+    
+    draw(jup) {
         var currentState = [182, 54, 15, 25, 20];
         for (let i = 15; i > 0; i--) {
-            this.makeAnEllipse(...currentState);
+            this.makeAnEllipse(...currentState, jup);
             currentState = currentState.map((d, j) => {
                 let value = d - 1;
                 

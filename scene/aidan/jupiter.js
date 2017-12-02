@@ -8,17 +8,59 @@
 
 export default class Jupiter {
     
+    // constructor:
+    //      lib: code.org library
+    
+    // Instantiates the object with initial values
+    // Written by Daniel Noon
+    
+    constructor(lib) {
+        this.jupiter = {
+            x: lib.width / 2, 
+            y: 0,
+            up: true
+        };
+        this.tick = 0;
+    }
+    
+    // ease:
+    //      t: time between 0 and 1.
+    
+    // Quadratic ease-in-out function to ease the rising and falling of Jupiter.
+    // Written by @gre on GitHub Gist
+    
+    ease(t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t }
+    
     // jupiterShape:
     //      lib: code.org library
     
     // Draws the circle for the base of Jupiter. Then, it calls the drawStripes method, passing in the library as a parameter.
-    // Written by Aidan Buechler
+    // Written by Aidan Buechler with edits by Daniel Noon
     
     jupiterShape(lib) {
-        lib.moveTo(lib.width/2,lib.height/2);
+        lib.moveTo(this.jupiter.x, lib.height / 2 + this.jupiter.y);
         lib.penColor("#98826D");
         lib.dot(130);
         this.drawStripes(lib);
+        return this.moveJupiter(lib);
+    }
+    
+    // moveJupiter:
+    //      lib: code.org library
+    
+    // Moves Jupiter up and down.
+    // Written by Daniel Noon
+    
+    moveJupiter(lib) {
+        this.tick += this.jupiter.up ? -.01 : .01;
+        this.jupiter.y = this.ease(this.tick) * 10 - 5;
+        if (this.tick >= 1) {
+            this.jupiter.up = true;
+        }
+        if (this.tick <= 0) {
+            this.jupiter.up = false;
+        }
+        return this.jupiter.y;
     }
     
     // drawStripes
@@ -28,14 +70,14 @@ export default class Jupiter {
     // Written by all contributors
     
     drawStripes(lib) {
-        this.stripe(lib, [52, 218], 7, "#B0804F", [9, 1370], 0);
-        this.stripe(lib, [48, 225], 7, "#B0804F", [9, 1415], 0);
-        this.stripe(lib, [45, 240], 15, "#994d00", [8, 1642], .5);
-        this.stripe(lib, [44, 230], 5, "#C6DAEF", [8, 1650]);
-        this.stripe(lib, [41, 310], 17, "#994d00", [7.8, 1762], 7.8, 1);
-        this.stripe(lib, [44, 285], 30, "#C6DAEF", [1, 13200], 3.7);
-        this.stripe(lib, [55, 211], 5, "#C6DAEF", [8, 1487]);
-        this.stripe(lib, [261, 350], 22, "#4E4036", [6, 1900], 181);
+        this.stripe(lib, [52, 218 + this.jupiter.y], 7, "#B0804F", [9, 1370], 0);
+        this.stripe(lib, [48, 225 + this.jupiter.y], 7, "#B0804F", [9, 1415], 0);
+        this.stripe(lib, [45, 240 + this.jupiter.y], 15, "#994d00", [8, 1642], .5);
+        this.stripe(lib, [44, 230 + this.jupiter.y], 5, "#C6DAEF", [8, 1650]);
+        this.stripe(lib, [41, 310 + this.jupiter.y], 17, "#994d00", [7.8, 1762], 7.8, 1);
+        this.stripe(lib, [44, 285 + this.jupiter.y], 30, "#C6DAEF", [1, 13200], 3.7);
+        this.stripe(lib, [55, 211 + this.jupiter.y], 5, "#C6DAEF", [8, 1487]);
+        this.stripe(lib, [261, 350 + this.jupiter.y], 22, "#4E4036", [6, 1900], 181);
     }
     
     // stripe
@@ -48,7 +90,7 @@ export default class Jupiter {
     //      left: whether or not to use arcLeft as opposed to arcRight (boolean)
     
     // Draws a single stripe on Jupiter's surface.
-    // Written by Aidan Buechler with some additions by Daniel Noon
+    // Written by Aidan Buechler
     
     stripe(lib, coord, width, color, arc, rot, left) {
         lib.turnTo(rot);
