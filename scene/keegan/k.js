@@ -10,6 +10,26 @@ export default class Space {
     constructor(lib) {
         this.lib = lib;
         this.madeStars = [];
+        this.makeStars(lib);
+        this.makeMoons(lib);
+    }
+    
+    makeMoons(lib) {
+        this.madeMoons = [];
+        for (var i=0;i<7;i++) {
+            let newMoon = {
+                s: Math.random()*12,
+                x: Math.random()*(lib.width),
+                y: lib.randomNumber(50, lib.height - 50),
+                r: 62+lib.randomNumber(0,50),
+                g: 39+lib.randomNumber(0,30),
+                b: 35+lib.randomNumber(0,20)
+            };
+            this.madeMoons.push(newMoon);
+        }
+    }
+    
+    makeStars(lib) {
         for (let i=0; i<100; i++){
             let newStar = {
                 x: Math.random()*lib.width,
@@ -18,19 +38,6 @@ export default class Space {
             };
             this.madeStars.push(newStar);
         }
-        
-        this.madeMoons = [];
-        for (var i=0;i<7;i++) {
-            let newMoon = {
-                s: Math.random()*12,
-                x: Math.random()*(lib.width),
-                y: Math.random()*(lib.height),
-                r: 62+lib.randomNumber(0,50),
-                g: 39+lib.randomNumber(0,30),
-                b: 35+lib.randomNumber(0,20)
-            };
-            this.madeMoons.push(newMoon);
-        } 
     }
     
     stars(lib) {
@@ -42,8 +49,10 @@ export default class Space {
             lib.moveTo(star.x,star.y);
             lib.dot(star.size);
             star.x += .25;
-            if (star.x > this.lib.width) {
-                star.x = 0;
+            if (star.x > this.lib.width + 5) {
+                star.x = -5;
+                star.y = Math.random()*lib.height;
+                star.size = Math.random()*3;
             }
         }
         
@@ -86,6 +95,11 @@ export default class Space {
         }
     }
     
+    flipFlop(y) {
+        let difference = y - this.lib.height / 2;
+        return this.lib.height / 2 - difference;
+    }
+    
     moons (lib){
         
         //This function uses a for loop and if loop to create 8 moons
@@ -107,15 +121,17 @@ export default class Space {
                 behind = false;
             }
             
-            if (movingLeft) moon.x -= .5;
-            else moon.x += .5;
+            if (movingLeft) moon.x -= .3;
+            else moon.x += .6;
             
             if (!behind) lib.dot(size);
-            if (movingLeft && moon.x <= -10) {
+            if (movingLeft && moon.x <= -25) {
                 moon.s -= 6;
+                moon.y = this.flipFlop(moon.y);
             }
-            if (!movingLeft && moon.x >= lib.width + 10) {
+            if (!movingLeft && moon.x >= lib.width + 25) {
                 moon.s += 6;
+                moon.y = this.flipFlop(moon.y);
             }
         }
     }

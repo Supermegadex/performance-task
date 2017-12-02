@@ -26,10 +26,21 @@ export default class Storm {
     }
     
     draw() {
-        var currentState = [194, 135, 55, 25, 15];
+        var currentState = [182, 54, 15, 25, 20];
         for (let i = 15; i > 0; i--) {
             this.makeAnEllipse(...currentState);
-            currentState = currentState.map(d => d - 1);
+            currentState = currentState.map((d, j) => {
+                let value = d - 1;
+                
+                // Do special things to the colors
+                if (j < 3) {
+                    if (i < 5) value = d - 4;
+                    if (i >= 6 && i < 8) value = d - 1;
+                    if (i >= 10) value = d + 3;
+                }
+                
+                return value;
+            });
         }
     }
 }

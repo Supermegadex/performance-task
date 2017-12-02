@@ -6,7 +6,7 @@
  * 
  *************************************************************/
 
- // Import required modules.
+// Import required modules.
 import Jupiter from './aidan/jupiter';
 import Space from './keegan/k';
 import Library from './daniel/lib';
@@ -38,6 +38,3 @@ function draw() {
     requestAnimationFrame(draw);
 }
 draw();
-
-// Log the Library instance to the console for debugging (will be removed).
-console.log(lib);
