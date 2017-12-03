@@ -46,11 +46,12 @@ export default class Storm {
     // draw:
     //      jup: Jupiter's current y-offset
     
-    // Instantiates the object with initial values.
+    // Draws Jupiter's Great Red Spot.
     // Written by Daniel Noon
     
     draw(jup) {
-        var currentState = [182, 54, 15, 25, 20];
+        // Create an array with values that will be passed
+        let currentState = [182, 54, 15, 25, 20];
         for (let i = 15; i > 0; i--) {
             this.makeAnEllipse(...currentState, jup);
             currentState = currentState.map((d, j) => {

@@ -159,23 +159,23 @@ export default class Library {
     }
 
     arcRight(angle, radius, left) {
-        var center = left ? -90 : 90;
-        var deg = left ? -angle : angle;
-        var ctx = this.ctx;
+        let center = left ? -90 : 90;
+        let deg = left ? -angle : angle;
+        let ctx = this.ctx;
         if (ctx) {
-            var x1 = this.turtle.x + radius * Math.sin(2 * Math.PI * (this.turtle.rot + center) / 360);
-            var y1 = this.turtle.y - radius * Math.cos(2 * Math.PI * (this.turtle.rot + center) / 360);
+            let x1 = this.turtle.x + radius * Math.sin(2 * Math.PI * (this.turtle.rot + center) / 360);
+            let y1 = this.turtle.y - radius * Math.cos(2 * Math.PI * (this.turtle.rot + center) / 360);
 
-            var start = 2 * Math.PI * (this.turtle.rot + (left ? 0 : 180)) / 360;
-            var end = start + (2 * Math.PI * deg / 360);
+            let start = 2 * Math.PI * (this.turtle.rot + (left ? 0 : 180)) / 360;
+            let end = start + (2 * Math.PI * deg / 360);
 
             ctx.beginPath();
             ctx.arc(x1, y1, radius, start, end, left);
             ctx.stroke();
 
             this.turtle.rot = (this.turtle.rot + deg + 360) % 360;
-            var x2 = radius * Math.cos(2 * Math.PI * this.turtle.rot / 360);
-            var y2 = radius * Math.sin(2 * Math.PI * this.turtle.rot / 360);
+            let x2 = radius * Math.cos(2 * Math.PI * this.turtle.rot / 360);
+            let y2 = radius * Math.sin(2 * Math.PI * this.turtle.rot / 360);
             this.turtle.x = x1 + (left ? x2 : -x2);
             this.turtle.y = y1 + (left ? y2 : -y2);
         }
