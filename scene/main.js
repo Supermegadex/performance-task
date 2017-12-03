@@ -32,8 +32,8 @@ let storm = new Storm(lib);
 function draw() {
     space.background(lib);
     space.stars(lib);
-    let jup = jupiter.jupiterShape(lib);
-    storm.draw(jup);
+    jupiter.jupiterShape(lib);
+    storm.draw(jupiter.jupiter.y);
     space.moons(lib);
     requestAnimationFrame(draw);
 }
