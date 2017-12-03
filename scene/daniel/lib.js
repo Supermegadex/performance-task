@@ -11,16 +11,16 @@ export default class Library {
         
         // Add toRad method to the prototype of every Number
         if (typeof (Number.prototype.toRad) === "undefined") {
-            Number.prototype.toRad = function () {
-                return this * Math.PI / 180;
-            }
+            Number.prototype.toRad = function() { 
+                return this * Math.PI / 180; 
+            };
         }
         
         // Add toDeg method to the prototype of every Number
         if (typeof (Number.prototype.toDeg) === "undefined") {
-            Number.prototype.toDeg = function () {
-                return this * 180 / Math.PI;
-            }
+            Number.prototype.toDeg = function() { 
+                return this * 180 / Math.PI; 
+            };
         }
         
         // Assign initialization parameters to the instance
