@@ -18,6 +18,8 @@ export default class Space {
         this.lib = lib;
         this.madeStars = [];
         this.madeMoons = [];
+        
+        // Generate the stars and the moons.
         this.makeStars(lib);
         this.makeMoons(lib);
     }
@@ -68,8 +70,6 @@ export default class Space {
     // Written by Keegan Brown
     
     background(lib){
-        
-        //draws background
         lib.moveTo(lib.width/2,lib.height/2);
         lib.penColor("black");
         lib.dot(500);
@@ -121,7 +121,7 @@ export default class Space {
             var size = moon.s;
             lib.moveTo(moon.x, moon.y);
             lib.penRGB(moon.r, moon.g, moon.b);
-            let movingLeft = false;
+            let movingLeft = true;
             let behind = false;
             
             if (moon.s < 6) {
@@ -129,13 +129,8 @@ export default class Space {
                 behind = true;
             }
             
-            else {
-                movingLeft = true;
-                behind = false;
-            }
-            
-            if (movingLeft) moon.x -= .5;
-            else moon.x += .5;
+            if (movingLeft) moon.x -= .6;
+            else moon.x += .3;
             
             if (behind) lib.dot(size);
         }
@@ -154,7 +149,7 @@ export default class Space {
             var size = moon.s;
             lib.moveTo(moon.x, moon.y);
             lib.penRGB(moon.r, moon.g, moon.b);
-            let movingLeft = false;
+            let movingLeft = true;
             let behind = false;
             
             if (moon.s < 6) {
@@ -162,13 +157,8 @@ export default class Space {
                 behind = true;
             }
             
-            else {
-                movingLeft = true;
-                behind = false;
-            }
-            
-            if (movingLeft) moon.x -= .3;
-            else moon.x += .6;
+            if (movingLeft) moon.x -= .6;
+            else moon.x += .3;
             
             if (!behind) lib.dot(size);
             if (movingLeft && moon.x <= -25) {

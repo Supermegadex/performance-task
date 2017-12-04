@@ -34,7 +34,8 @@ export default class Storm {
         this.lib.ctx.beginPath();
         this.lib.ctx.ellipse(
             this.lib.width / 2 - 50,
-            this.lib.height / 2 + 50 + jup, // Add jupiter's y-offest to make sure the spot animates with Jupiter
+            // Add jupiter's y-offest to make sure the spot animates with Jupiter
+            this.lib.height / 2 + 50 + jup,
             sizeX,
             sizeY,
             0,
@@ -50,20 +51,27 @@ export default class Storm {
     // Written by Daniel Noon
     
     draw(jup) {
-        // Create an array with values that will be passed
+        // Create an array with values that will be passed to makeAnEllipse and manipulated
+        // <red, green, blue, x-radius, y-radius>
         let currentState = [182, 54, 15, 25, 20];
+        // Make 15 ellipses, making them smaller every time.
         for (let i = 15; i > 0; i--) {
+            // Call makeAnEllipse using the array of values.
+            // This is an ES6 feature called "spreading" an array.
             this.makeAnEllipse(...currentState, jup);
+            
+            // Map the values of the array, replacing the original array with new values.
             currentState = currentState.map((d, j) => {
+                // Subtract one from most of the values.
                 let value = d - 1;
                 
-                // Do special things to the colors
+                // Do special things to the colors based on where we are in the loop.
                 if (j < 3) {
                     if (i < 5) value = d - 4;
-                    if (i >= 6 && i < 8) value = d - 1;
                     if (i >= 10) value = d + 3;
                 }
                 
+                // Return the new value, which adds it to the right place in the new array.
                 return value;
             });
         }

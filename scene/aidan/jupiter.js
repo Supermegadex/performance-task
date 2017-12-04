@@ -77,7 +77,7 @@ export default class Jupiter {
         this.stripe(lib, [41, 310 + this.jupiter.y], 17, "#994d00", [7.8, 1762], 7.8, 1);
         this.stripe(lib, [44, 285 + this.jupiter.y], 30, "#C6DAEF", [1, 13200], 3.7);
         this.stripe(lib, [55, 211 + this.jupiter.y], 5, "#C6DAEF", [8, 1487]);
-        this.stripe(lib, [261, 350 + this.jupiter.y], 22, "#4E4036", [6, 1900], 181);
+        this.stripe(lib, [260, 350 + this.jupiter.y], 22, "#4E4036", [6, 1880], 181);
     }
     
     // stripe
